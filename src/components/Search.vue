@@ -4,6 +4,20 @@
     <form class="label-search">
         <ion-label>Montant: </ion-label>
         <ion-input class="input-color" type="number" v-model="numberToConvert" placeholder="Euro"></ion-input>
+    
+      <ion-item>
+            <ion-label>Monnaie de la conversion</ion-label>
+            <ion-select ok-text="Valider" cancel-text="Annuler">
+              <ion-select-option value="dos">DOS</ion-select-option>
+              <ion-select-option value="lunix">Linux</ion-select-option>
+              <ion-select-option value="mac7">Mac OS 7</ion-select-option>
+              <ion-select-option value="mac8">Mac OS 8</ion-select-option>
+              <ion-select-option value="win3.1">Windows 3.1</ion-select-option>
+              <ion-select-option value="win95">Windows 95</ion-select-option>
+              <ion-select-option value="win98">Windows 98</ion-select-option>
+            </ion-select>
+      </ion-item>
+      <ion-button type="submit" expand="block">Convertir</ion-button>
     </form>
  
 
@@ -19,7 +33,7 @@
 </style>
 <script>
 
-import { IonInput, IonRouterOutlet } from '@ionic/vue';
+import { IonInput, IonItem, IonSelect, IonSelectOption, IonRouterOutlet, IonLabel } from '@ionic/vue';
 
 
 
@@ -34,7 +48,11 @@ export default ({
   },
   components: {
     IonRouterOutlet,
-    IonInput
+    IonInput,
+    IonLabel,
+    IonItem,
+    IonSelect,
+    IonSelectOption,
   }
 
 });
