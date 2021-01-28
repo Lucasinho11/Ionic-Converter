@@ -1,0 +1,7 @@
+{
+  "name": "ionic-converter",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "vue"
+}
