@@ -12,27 +12,29 @@
           <ion-title size="large">€uro Converter</ion-title>
         </ion-toolbar>
       </ion-header>
-      <Search/>
+      
       <div id="container">
+        <Search/>
+        
       </div>
     </ion-content>
   </ion-page>
 </template>
-
 <script>
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/vue';
-import { defineComponent } from 'vue';
-
-export default defineComponent({
+import Search from '@/components/Search';
+export default {
   name: 'Home',
   components: {
     IonContent,
     IonHeader,
     IonPage,
     IonTitle,
-    IonToolbar
+    IonToolbar,
+    Search
+
   }
-});
+};
 </script>
 
 <style scoped>

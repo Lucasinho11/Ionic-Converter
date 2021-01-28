@@ -1,23 +1,33 @@
 <template>
-    <ion-router-outlet />
-    <ion-input type="number" value="333"></ion-input>
-    <form>
+  <ion-router-outlet />
 
+    <form class="label-search">
+        <ion-label>Montant: </ion-label>
+        <ion-input class="input-color" type="number" v-model="numberToConvert" placeholder="Euro"></ion-input>
     </form>
-</template>
+ 
 
+</template>
+<style>
+  .label-search{
+    text-align: left;
+  }
+  .input-color{
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    border-radius: 2%;
+  }
+</style>
 <script>
 
-import { IonRouterOutlet, IonInput } from '@ionic/vue';
+import { IonInput, IonRouterOutlet } from '@ionic/vue';
 
 
 
 export default ({
-  name: 'Form',
+  name: 'Search',
   data(){
-    return{
-      city: '',
-        
+    return{        
+      numberToConvert: '',
     }
   },
   methods: {
