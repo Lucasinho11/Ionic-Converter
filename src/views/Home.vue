@@ -14,7 +14,8 @@
       </ion-header>
       
       <div id="container">
-        <Search/>
+        <Search @selectMoney='dataArray'/>
+        <Results/>
         
       </div>
     </ion-content>
@@ -23,6 +24,7 @@
 <script>
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/vue';
 import Search from '@/components/Search';
+import Results from '@/components/Results';
 export default {
   name: 'Home',
   components: {
@@ -31,8 +33,14 @@ export default {
     IonPage,
     IonTitle,
     IonToolbar,
-    Search
+    Search,
+    Results
 
+  },
+  methods: {
+    dataArray(value) {
+      console.log(value) // someValue
+    }
   }
 };
 </script>

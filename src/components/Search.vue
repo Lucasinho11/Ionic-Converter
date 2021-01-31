@@ -7,16 +7,12 @@
     
       <ion-item>
             <ion-label>Monnaie de la conversion</ion-label>
-            <ion-select ok-text="Valider" cancel-text="Annuler">
-              <ion-select-option value="dos">DOS</ion-select-option>
-              <ion-select-option value="lunix">Linux</ion-select-option>
-              <ion-select-option value="mac7">Mac OS 7</ion-select-option>
-              <ion-select-option value="mac8">Mac OS 8</ion-select-option>
-              <ion-select-option value="win3.1">Windows 3.1</ion-select-option>
-              <ion-select-option value="win95">Windows 95</ion-select-option>
-              <ion-select-option value="win98">Windows 98</ion-select-option>
+            <ion-select ok-text="Valider"  cancel-text="Annuler" >
+              <ion-select-option v-for="data in dataArray" :key="data">{{ data}}</ion-select-option> 
             </ion-select>
+            
       </ion-item>
+
       <ion-button type="submit" expand="block">Convertir</ion-button>
     </form>
  
@@ -33,8 +29,8 @@
 </style>
 <script>
 
-import { IonInput, IonItem, IonSelect, IonSelectOption, IonRouterOutlet, IonLabel } from '@ionic/vue';
-
+import { IonInput, IonItem, IonSelect, IonSelectOption, IonRouterOutlet, IonLabel, IonButton } from '@ionic/vue';
+import axios from 'axios';
 
 
 export default ({
@@ -42,8 +38,11 @@ export default ({
   data(){
     return{        
       numberToConvert: '',
+      dataArray: [],
+      
     }
   },
+  emits: ['selectMoney'],
   methods: {
   },
   components: {
@@ -53,6 +52,25 @@ export default ({
     IonItem,
     IonSelect,
     IonSelectOption,
+    IonButton
+  },
+  mounted(){
+    axios
+        .get(`http://data.fixer.io/api/symbols?access_key=ed7580a94544bcab96d6d289203df29a`)
+        .then((response) =>{
+            console.log(response.data);
+            this.dataArray = response.data.symbols
+            // this.dataArray = Object.keys(response.data.rates).map(function(cle) {
+             // return [cle, response.data.rates[cle]];
+            //})
+            //console.log(this.dataArray.symbols)
+            this.$emit('selectMoney', this.dataArray);
+           
+          //console.log(dataArray);
+        })
+        .catch(() =>{
+            
+        });
   }
 
 });
