@@ -47,15 +47,15 @@ export default {
   
   methods: {
     convert(){
-            this.result = (this.amount * this.selectedMoney).toFixed(2)
-            console.log(this.selectedMoney)
-            console.log(this.amount)
-            console.log(this.result)
-            return this.result;
+      this.result = (this.amount * this.selectedMoney).toFixed(2)
+      console.log(this.selectedMoney)
+      console.log(this.amount)
+      console.log(this.result)
+        return this.result;
        
     },
     dataArray(value) {
-      console.log(value) // someValue
+      console.log(value)
     },
     selectedSearch(value){
       this.selectedMoney = value,

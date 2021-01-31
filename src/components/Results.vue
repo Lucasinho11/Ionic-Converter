@@ -1,6 +1,10 @@
 <template>
   <ion-router-outlet />
-    <p>Résultat: {{ this.result }}</p>
+   <ion-card>
+    <ion-card-header>
+      <ion-card-title>Résultat: {{ this.result }}</ion-card-title>
+    </ion-card-header>
+  </ion-card>
 
 </template>
 <style>
@@ -8,7 +12,7 @@
 </style>
 <script>
 
-import {IonRouterOutlet} from '@ionic/vue';
+import {IonRouterOutlet, IonCard, IonCardHeader, IonCardTitle} from '@ionic/vue';
 
 export default ({
   name: 'Results',
@@ -18,14 +22,13 @@ export default ({
     }
   },
   props : ['result'],
-  emits:['convertMoney'],
   methods: {
-
-       
   },
   components: {
     IonRouterOutlet,
-
+    IonCard,
+    IonCardHeader,
+    IonCardTitle
   },
 
 });

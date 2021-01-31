@@ -62,14 +62,11 @@ export default ({
         .get(`http://data.fixer.io/api/latest?access_key=${process.env.VUE_APP_API_KEY}`)
         .then((response) =>{
             console.log(response.data.rates);
-            //this.dataArray = response.data.rates
-             this.dataArray = Object.keys(response.data.rates).map(function(cle) {
-              return [cle, response.data.rates[cle]];
+             this.dataArray = Object.keys(response.data.rates).map(function(value) {
+              return [value, response.data.rates[value]];
             })
-            //console.log(this.dataArray.symbols)
             this.$emit('selectMoney', this.dataArray);
-           
-          //console.log(dataArray);
+          
         })
         .catch((error) => {
           console.log(error);
