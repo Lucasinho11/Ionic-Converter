@@ -15,7 +15,7 @@
       
       <div id="container">
         <Search @selectMoney='dataArray' @selectedSearch='selectedSearch' @numberSearch='numberSearch'/>
-        <Results :result='result'/>
+        <Results v-if="result!= ''" :result='result'/>
         
       </div>
     </ion-content>

@@ -42,8 +42,11 @@ export default ({
   emits: ['selectMoney', 'selectedSearch', 'numberSearch'],
   methods: {
    toResult(){
-     this.$emit('selectedSearch', this.selected);
-     this.$emit('numberSearch', this.numberToConvert);
+     if(this.numberToConvert > 0 && this.selected){
+            this.$emit('selectedSearch', this.selected);
+            this.$emit('numberSearch', this.numberToConvert);
+     }
+
    }
   },
   components: {
@@ -68,9 +71,9 @@ export default ({
            
           //console.log(dataArray);
         })
-        .catch(() =>{
-            
-        });
+        .catch((error) => {
+          console.log(error);
+        })
   }
 
 });

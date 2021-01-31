@@ -1,6 +1,6 @@
 <template>
   <ion-router-outlet />
-    <p>{{ this.result }}</p>
+    <p>Résultat: {{ this.result }}</p>
 
 </template>
 <style>
@@ -14,7 +14,6 @@ export default ({
   name: 'Results',
   data(){
     return{        
-        
       
     }
   },
