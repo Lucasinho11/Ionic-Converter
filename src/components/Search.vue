@@ -1,19 +1,15 @@
 <template>
   <ion-router-outlet />
 
-    <form class="label-search">
+    <form class="label-search" @submit.prevent="toResult">
         <ion-label>Montant: </ion-label>
         <ion-input class="input-color" type="number" v-model="numberToConvert" placeholder="Euro"></ion-input>
-    
       <ion-item>
             <ion-label>Monnaie de la conversion</ion-label>
-            <ion-select ok-text="Valider"  cancel-text="Annuler" >
-              <ion-select-option v-for="data in dataArray" :key="data">{{ data}}</ion-select-option> 
+            <ion-select ok-text="Valider"  cancel-text="Annuler" v-model="selected" >
+              <ion-select-option v-for="data in dataArray" :key="data" :value="data[1]">{{ data[0] }}</ion-select-option> 
             </ion-select>
-            
       </ion-item>
-
-      <ion-button type="submit" expand="block">Convertir</ion-button>
     </form>
  
 
@@ -29,7 +25,7 @@
 </style>
 <script>
 
-import { IonInput, IonItem, IonSelect, IonSelectOption, IonRouterOutlet, IonLabel, IonButton } from '@ionic/vue';
+import { IonInput, IonItem, IonSelect, IonSelectOption, IonRouterOutlet, IonLabel } from '@ionic/vue';
 import axios from 'axios';
 
 
@@ -39,11 +35,16 @@ export default ({
     return{        
       numberToConvert: '',
       dataArray: [],
+      selected: '',
       
     }
   },
-  emits: ['selectMoney'],
+  emits: ['selectMoney', 'selectedSearch', 'numberSearch'],
   methods: {
+   toResult(){
+     this.$emit('selectedSearch', this.selected);
+     this.$emit('numberSearch', this.numberToConvert);
+   }
   },
   components: {
     IonRouterOutlet,
@@ -52,17 +53,16 @@ export default ({
     IonItem,
     IonSelect,
     IonSelectOption,
-    IonButton
   },
   mounted(){
     axios
-        .get(`http://data.fixer.io/api/symbols?access_key=ed7580a94544bcab96d6d289203df29a`)
+        .get(`http://data.fixer.io/api/latest?access_key=${process.env.VUE_APP_API_KEY}`)
         .then((response) =>{
-            console.log(response.data);
-            this.dataArray = response.data.symbols
-            // this.dataArray = Object.keys(response.data.rates).map(function(cle) {
-             // return [cle, response.data.rates[cle]];
-            //})
+            console.log(response.data.rates);
+            //this.dataArray = response.data.rates
+             this.dataArray = Object.keys(response.data.rates).map(function(cle) {
+              return [cle, response.data.rates[cle]];
+            })
             //console.log(this.dataArray.symbols)
             this.$emit('selectMoney', this.dataArray);
            

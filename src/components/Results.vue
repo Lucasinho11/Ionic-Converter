@@ -1,7 +1,6 @@
 <template>
   <ion-router-outlet />
-
-    <p>jfzjefniezfzieu</p>
+    <p>{{ this.result }}</p>
 
 </template>
 <style>
@@ -11,24 +10,25 @@
 
 import {IonRouterOutlet} from '@ionic/vue';
 
-
 export default ({
   name: 'Results',
   data(){
     return{        
-        test: '',
+        
       
     }
   },
+  props : ['result'],
+  emits:['convertMoney'],
   methods: {
+
+       
   },
   components: {
     IonRouterOutlet,
 
   },
-  mounted(){
-    
-  }
 
 });
+
 </script>

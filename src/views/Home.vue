@@ -14,8 +14,8 @@
       </ion-header>
       
       <div id="container">
-        <Search @selectMoney='dataArray'/>
-        <Results/>
+        <Search @selectMoney='dataArray' @selectedSearch='selectedSearch' @numberSearch='numberSearch'/>
+        <Results :result='result'/>
         
       </div>
     </ion-content>
@@ -27,6 +27,13 @@ import Search from '@/components/Search';
 import Results from '@/components/Results';
 export default {
   name: 'Home',
+  data(){
+    return{
+      selectedMoney : '',
+      amount: '',
+      result: '',
+    }
+  },
   components: {
     IonContent,
     IonHeader,
@@ -37,10 +44,28 @@ export default {
     Results
 
   },
+  
   methods: {
+    convert(){
+            this.result = (this.amount * this.selectedMoney).toFixed(2)
+            console.log(this.selectedMoney)
+            console.log(this.amount)
+            console.log(this.result)
+            return this.result;
+       
+    },
     dataArray(value) {
       console.log(value) // someValue
-    }
+    },
+    selectedSearch(value){
+      this.selectedMoney = value,
+      console.log(value)
+    },
+    numberSearch(value){
+      this.amount = value,
+      this.convert()
+      console.log(value)
+    },
   }
 };
 </script>
