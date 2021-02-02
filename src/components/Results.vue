@@ -2,7 +2,7 @@
   <ion-router-outlet />
    <ion-card>
     <ion-card-header>
-      <ion-card-title>Résultat: {{ this.result }}</ion-card-title>
+      <ion-card-title>Résultat: {{ this.result }} {{ this.selectedMoney[0] }}</ion-card-title>
     </ion-card-header>
   </ion-card>
 
@@ -21,7 +21,7 @@ export default ({
       
     }
   },
-  props : ['result'],
+  props : ['result', 'selectedMoney'],
   methods: {
   },
   components: {

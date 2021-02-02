@@ -15,7 +15,7 @@
       
       <div id="container">
         <Search @selectMoney='dataArray' @selectedSearch='selectedSearch' @numberSearch='numberSearch'/>
-        <Results v-if="result!= ''" :result='result'/>
+        <Results v-if="result!= ''" :result='result' :selectedMoney='selectedMoney'/>
         
       </div>
     </ion-content>
@@ -48,7 +48,7 @@ export default {
   
   methods: {
     convert(){
-      this.result = (this.amount * this.selectedMoney).toFixed(2)
+      this.result = (this.amount * this.selectedMoney[1]).toFixed(2)
       console.log(this.selectedMoney)
       console.log(this.amount)
       console.log(this.result)

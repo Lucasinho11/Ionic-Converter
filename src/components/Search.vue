@@ -7,7 +7,7 @@
       <ion-item>
             <ion-label>Monnaie de la conversion</ion-label>
             <ion-select ok-text="Valider"  cancel-text="Annuler" v-model="selected" >
-              <ion-select-option v-for="data in dataArray" :key="data" :value="data[1]">{{ data[0] }}</ion-select-option> 
+              <ion-select-option v-for="data in dataArray" :key="data" :value="data">{{ data[0] }}</ion-select-option> 
             </ion-select>
       </ion-item>
       <ion-button expand="block" type="submit">Block Button</ion-button>
