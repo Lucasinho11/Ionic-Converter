@@ -10,7 +10,7 @@
               <ion-select-option v-for="data in dataArray" :key="data" :value="data">{{ data[0] }}</ion-select-option> 
             </ion-select>
       </ion-item>
-      <ion-button expand="block" type="submit">Block Button</ion-button>
+      <ion-button expand="block" type="submit">Convertir</ion-button>
     </form>
  
 
