@@ -32,6 +32,7 @@ export default {
       selectedMoney : '',
       amount: '',
       result: '',
+      test: '',
     }
   },
   components: {

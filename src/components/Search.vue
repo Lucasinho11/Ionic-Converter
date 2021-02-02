@@ -10,6 +10,7 @@
               <ion-select-option v-for="data in dataArray" :key="data" :value="data[1]">{{ data[0] }}</ion-select-option> 
             </ion-select>
       </ion-item>
+      <ion-button expand="block" type="submit">Block Button</ion-button>
     </form>
  
 
@@ -25,7 +26,7 @@
 </style>
 <script>
 
-import { IonInput, IonItem, IonSelect, IonSelectOption, IonRouterOutlet, IonLabel } from '@ionic/vue';
+import { IonInput, IonItem, IonSelect, IonSelectOption, IonRouterOutlet, IonLabel, IonButton } from '@ionic/vue';
 import axios from 'axios';
 
 
@@ -56,6 +57,7 @@ export default ({
     IonItem,
     IonSelect,
     IonSelectOption,
+    IonButton
   },
   mounted(){
     axios
